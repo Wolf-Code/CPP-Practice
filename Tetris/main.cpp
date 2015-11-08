@@ -1,7 +1,5 @@
 #include "stdafx.h"
-#include "Renderer.h"
-
-void renderScene( void );
+#include "TetrisRenderer.h"
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary> The program's entry point. </summary>
@@ -12,32 +10,10 @@ void renderScene( void );
 ///-------------------------------------------------------------------------------------------------
 int main( int argc, char **argv )
 {
-    Renderer R( argc, argv );
+    TetrisRenderer R( argc, argv );
     // init GLUT and create Window. 
-    R.Initialize( GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
-    R.MakeWindow( "OpenGL!" );
-
-
-    R.SetDisplayFunc( renderScene );
-    R.MainLoop( );
+    R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
 
     return 1;
 
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary> Renders the scene. </summary>
-/// <remarks> Wolf, 08-Nov-15. </remarks>
-///-------------------------------------------------------------------------------------------------
-void renderScene( void )
-{
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-    glBegin( GL_TRIANGLES );
-    glVertex3f( -0.5, -0.5, 0.0 );
-    glVertex3f( 0.5, 0.0, 0.0 );
-    glVertex3f( 0.0, 0.5, 0.0 );
-    glEnd( );
-
-    glutSwapBuffers( );
 }

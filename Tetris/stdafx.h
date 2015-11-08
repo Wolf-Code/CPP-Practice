@@ -7,4 +7,6 @@
 #include <GL/glut.h>
 #endif
 
+#include <iostream>
+
 #endif

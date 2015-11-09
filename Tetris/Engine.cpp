@@ -8,17 +8,30 @@ static Engine* m_This;
 // Makes sure the OnWindowResize event is called.
 void renderer_OnResize( int width, int height )
 {
-    m_This->OnWindowResize( width, height );
+    handler_OnResize( width, height, *m_This );
+}
+
+// Calls the actual events on the instance of Engine.
+void handler_OnResize( int width, int height, Engine& engine )
+{
+    engine.OnWindowResize( width, height );
 }
 
 // Makes sure the OnRender event is called.
 void renderer_OnRender( void )
 {
-    m_This->OnUpdate( );
-    m_This->OnRender( );
+    handler_OnRender( *m_This );
+}
+
+// Calls the actual events on the instance of Engine.
+void handler_OnRender( Engine& engine )
+{
+    engine.OnUpdate( );
+    engine.OnRender( );
     glutSwapBuffers( );
     glutPostRedisplay( );
 }
+
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary> Default constructor. </summary>
@@ -50,6 +63,7 @@ void Engine::Initialize( const char* title, const unsigned int displayMode, cons
 
     glutDisplayFunc( renderer_OnRender );
     glutReshapeFunc( renderer_OnResize );
+    this->inputHandler.Initialize( );
 
     glutMainLoop( );
 

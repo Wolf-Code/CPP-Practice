@@ -5,7 +5,7 @@
 struct Point2
 {
 public:
-    Point2( int X, int Y );
+    Point2( int X = 0, int Y = 0 );
 
     /// <summary> Addition operator. </summary>
     /// <param name="point"> The point. </param>

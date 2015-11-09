@@ -23,7 +23,7 @@ void TetrisEngine::OnRender( )
     glBegin( GL_TRIANGLES );
     glVertex3f( 0, 0, 0.0 );
     glVertex3f( this->GetWidth( ), 0.0, 0.0 );
-    glVertex3f( this->GetWidth( ) / 2.0, 200, 0.0 );
+    glVertex3f( this->inputHandler.GetMouseX( ), this->inputHandler.GetMouseY( ), 0.0 );
     glEnd( );
 }
 

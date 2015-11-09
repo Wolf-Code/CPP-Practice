@@ -13,8 +13,16 @@ int main( int argc, char **argv )
 {
     TetrisEngine R( argc, argv );
     // init GLUT and create Window. 
-    R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
-
-    return 1;
+    try
+    {
+        R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
+    }
+    catch( std::exception e )
+    {
+        std::cout << "ASD" << std::endl;
+    }
+    std::cin.clear( );
+    std::cin.get( );
+    return 0;
 
 }

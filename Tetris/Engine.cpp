@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "Renderer.h"
+#include "Engine.h"
 #include <stdexcept>
-#include <iostream>
 
-static Renderer* m_This;
+// A way to keep the active Engine accessable for the Glut hooks.
+static Engine* m_This;
 
 // Makes sure the OnWindowResize event is called.
 void renderer_OnResize( int width, int height )
@@ -24,19 +24,19 @@ void renderer_OnRender( void )
 /// <summary> Default constructor. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 ///-------------------------------------------------------------------------------------------------
-Renderer::Renderer( int argc, char** argv ) : windowIdentifier( 0 )
+Engine::Engine( int argc, char** argv ) : windowIdentifier( 0 ), width( 0 ), height( 0 )
 {
     glutInit( &argc, argv );
 }
 
 ///-------------------------------------------------------------------------------------------------
-/// <summary> Initializes the renderer. </summary>
+/// <summary> Initializes the engine. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="displayMode"> The display mode. </param>
 /// <param name="position">    The position. </param>
 /// <param name="size">        The size. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::Initialize( const char* title, const unsigned int displayMode, const Point2& position, const Point2& size )
+void Engine::Initialize( const char* title, const unsigned int displayMode, const Point2& position, const Point2& size )
 {
     if ( m_This )
         throw std::exception( "Only one instance of the Renderer may be active at any one time." );
@@ -61,7 +61,7 @@ void Renderer::Initialize( const char* title, const unsigned int displayMode, co
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="Position"> The position of the window. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::SetWindowPosition( const Point2& position ) const
+void Engine::SetWindowPosition( const Point2& position ) const
 {
     glutPositionWindow( position.X, position.Y );
 }
@@ -71,7 +71,7 @@ void Renderer::SetWindowPosition( const Point2& position ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="Size"> The size of the window. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::SetWindowSize( const Point2& size ) const
+void Engine::SetWindowSize( const Point2& size ) const
 {
     glutReshapeWindow( size.X, size.Y );
 }
@@ -81,7 +81,7 @@ void Renderer::SetWindowSize( const Point2& size ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="width"> The width. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::SetWidth( const int width ) const
+void Engine::SetWidth( const int width ) const
 {
     glutReshapeWindow( width <= 0 ? 1 : width, this->height );
 }
@@ -91,7 +91,7 @@ void Renderer::SetWidth( const int width ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="height"> The height. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::SetHeight( const int height ) const
+void Engine::SetHeight( const int height ) const
 {
     glutReshapeWindow( this->width, height <= 0 ? 1 : height );
 }
@@ -102,7 +102,7 @@ void Renderer::SetHeight( const int height ) const
 /// <param name="width">  The width. </param>
 /// <param name="height"> The height. </param>
 ///-------------------------------------------------------------------------------------------------
-void Renderer::OnWindowResize( const int width, const int height )
+void Engine::OnWindowResize( const int width, const int height )
 {
     // Use the Projection Matrix
     glMatrixMode( GL_PROJECTION );
@@ -124,37 +124,11 @@ void Renderer::OnWindowResize( const int width, const int height )
 }
 
 ///-------------------------------------------------------------------------------------------------
-/// <summary> Gets called when the renderer has finished loading. </summary>
-/// <remarks> Wolf, 08-Nov-15. </remarks>
-///-------------------------------------------------------------------------------------------------
-void Renderer::OnLoad( )
-{
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary> Gets called whenever a frame needs to be rendered. </summary>
-/// <remarks> Wolf, 08-Nov-15. </remarks>
-///-------------------------------------------------------------------------------------------------
-void Renderer::OnRender( )
-{
-    
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary> Gets called every frame, before the actual rendering of the frame. Update the objects in this method. </summary>
-/// <remarks> Wolf, 08-Nov-15. </remarks>
-///-------------------------------------------------------------------------------------------------
-void Renderer::OnUpdate()
-{
-
-}
-
-///-------------------------------------------------------------------------------------------------
 /// <summary> Gets the width of the display. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <returns> The width. </returns>
 ///-------------------------------------------------------------------------------------------------
-int Renderer::GetWidth( ) const
+int Engine::GetWidth( ) const
 {
     return this->width;
 }
@@ -164,7 +138,7 @@ int Renderer::GetWidth( ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <returns> The height. </returns>
 ///-------------------------------------------------------------------------------------------------
-int Renderer::GetHeight( ) const
+int Engine::GetHeight( ) const
 {
     return this->height;
 }
@@ -173,7 +147,7 @@ int Renderer::GetHeight( ) const
 /// <summary> Destructor. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 ///-------------------------------------------------------------------------------------------------
-Renderer::~Renderer( )
+Engine::~Engine( )
 {
     glutDestroyWindow( this->windowIdentifier );
 }

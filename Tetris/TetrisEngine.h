@@ -1,12 +1,13 @@
 #pragma once
+#include "Engine.h"
 #ifndef __TETRISRENDERER_H__
-#include "Renderer.h"
 
-class TetrisRenderer : public Renderer
+/// <summary> The engine implementation for tetris. </summary>
+class TetrisEngine : public Engine
 {
 public:
-    TetrisRenderer( int argc, char** argv );
-    ~TetrisRenderer( );
+    TetrisEngine( int argc, char** argv );
+    ~TetrisEngine( );
 
     void OnWindowResize( int width, int height ) override;
     void OnLoad( ) override;

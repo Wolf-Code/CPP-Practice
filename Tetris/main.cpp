@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "TetrisRenderer.h"
+#include "Point2.h"
+#include "TetrisEngine.h"
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary> The program's entry point. </summary>
@@ -10,7 +11,7 @@
 ///-------------------------------------------------------------------------------------------------
 int main( int argc, char **argv )
 {
-    TetrisRenderer R( argc, argv );
+    TetrisEngine R( argc, argv );
     // init GLUT and create Window. 
     R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
 

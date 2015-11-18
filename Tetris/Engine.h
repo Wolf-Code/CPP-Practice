@@ -1,5 +1,7 @@
 #pragma once
-#ifndef __RENDERER_H__
+#ifndef __ENGINE_H__
+#define __ENGINE_H__
+
 #include "Point2.h"
 #include "InputHandler.h"
 

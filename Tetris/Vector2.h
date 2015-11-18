@@ -1,11 +1,12 @@
 #pragma once
 #ifndef __VECTOR2_H__
+#define __VECTOR2_H__
 
 /// <summary> A 2D vector. </summary>
 struct Vector2
 {
 public:
-    Vector2( float x, float y );
+    Vector2( float x, float y ) : X( x ), Y( y ) {};
 
     /// <summary> Addition operator. </summary>
     /// <param name="vector"> The vector. </param>
@@ -56,8 +57,6 @@ public:
 
     /// <summary> The Y coordinate. </summary>
     float Y;
-
-private:
 };
 
 #endif

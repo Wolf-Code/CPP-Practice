@@ -49,7 +49,7 @@ void InputHandler::OnMouseMove( int x, int y )
     this->mousePos.Y = y;
 }
 
-int InputHandler::GetMouseX() const
+int InputHandler::GetMouseX( ) const
 {
     return this->mousePos.X;
 }

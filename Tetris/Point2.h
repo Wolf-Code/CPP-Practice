@@ -1,11 +1,12 @@
 #pragma once
 #ifndef __POINT2_H__
+#define __POINT2_H__
 
 /// <summary> A 2D point. </summary>
 struct Point2
 {
 public:
-    Point2( int X = 0, int Y = 0 );
+    Point2( int x = 0, int y = 0 ) : X( x ), Y( y ) {};
 
     /// <summary> Addition operator. </summary>
     /// <param name="point"> The point. </param>

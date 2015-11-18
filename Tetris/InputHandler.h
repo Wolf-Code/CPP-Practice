@@ -1,5 +1,7 @@
 #pragma once
 #ifndef __INPUTHANDLER_H__
+#define __INPUTHANDLER_H__
+
 #include "Point2.h"
 
 /// <summary> An input handler. </summary>

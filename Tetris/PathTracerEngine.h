@@ -1,14 +1,14 @@
 #pragma once
 #include "Engine.h"
-#ifndef __TETRISENGINE_H__
-#define __TETRISENGINE_H__
+#ifndef __PATHTRACERENGINE_H__
+#define __PATHTRACERENGINE_H__
 
 /// <summary> The engine implementation for tetris. </summary>
-class TetrisEngine : public Engine
+class PathTracerEngine : public Engine
 {
 public:
-    TetrisEngine( int argc, char** argv );
-    ~TetrisEngine( );
+    PathTracerEngine( int argc, char** argv );
+    ~PathTracerEngine( );
 
     void OnWindowResize( int width, int height ) override;
     void OnLoad( ) override;

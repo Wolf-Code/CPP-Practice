@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Point2.h"
-#include "TetrisEngine.h"
+#include "PathTracerEngine.h"
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary> The program's entry point. </summary>
@@ -11,7 +11,7 @@
 ///-------------------------------------------------------------------------------------------------
 int main( int argc, char **argv )
 {
-    TetrisEngine R( argc, argv );
+    PathTracerEngine R( argc, argv );
     // init GLUT and create Window. 
     try
     {
@@ -19,10 +19,10 @@ int main( int argc, char **argv )
     }
     catch( std::exception e )
     {
-        std::cout << "ASD" << std::endl;
+        std::cout << "Failed to initialize engine: " << std::endl;
     }
     std::cin.clear( );
     std::cin.get( );
-    return 0;
 
+    return 0;
 }

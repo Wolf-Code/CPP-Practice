@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "Engine.h"
 #include <stdexcept>
+#include "Engine.h"
 
 // A way to keep the active Engine accessable for the Glut hooks.
 static Engine* m_This;
@@ -65,9 +65,9 @@ void Engine::Initialize( const char* title, const unsigned int displayMode, cons
     glutReshapeFunc( renderer_OnResize );
     this->inputHandler.Initialize( );
 
-    glutMainLoop( );
-
     this->OnLoad( );
+
+    glutMainLoop( );
 }
 
 ///-------------------------------------------------------------------------------------------------

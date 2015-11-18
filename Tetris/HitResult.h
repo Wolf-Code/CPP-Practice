@@ -9,7 +9,6 @@ struct HitResult
 {
 public:
     HitResult( ) : Hit( false ), Position( Vector3( ) ), Normal( Vector3( ) ), DistanceSquared( 0 ), Object( nullptr ) {};
-
     /// <summary> Gets the distance. </summary>
     /// <returns> The distance. </returns>
     float Distance( ) const { return sqrt( this->DistanceSquared ); };

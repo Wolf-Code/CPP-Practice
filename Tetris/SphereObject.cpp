@@ -47,7 +47,7 @@ HitResult SphereObject::GetCollision( const Ray& ray ) const
     Res.Position = intersection;
     Res.Normal = normal;
     Res.DistanceSquared = ( intersection - ray.Start ).LengthSquared( );
-    //Res.Object = *this;
+    Res.Object = this;
     Res.Hit = true;
     return Res;
 }

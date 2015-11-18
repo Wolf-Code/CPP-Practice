@@ -8,8 +8,7 @@
 class ObjectBase
 {
 public:
-    virtual HitResult GetCollision( const Ray& ray ) const { return HitResult( ); };
+    virtual HitResult GetCollision( const Ray& ray ) const = 0;
     virtual ~ObjectBase( ) {};
 };
-
 #endif

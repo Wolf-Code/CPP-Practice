@@ -18,10 +18,11 @@ void PathTracerEngine::OnLoad( )
     std::cout << "Loaded renderer" << std::endl;
 
     SphereObject Obj( Vector3( 10, 0, 0 ), 5 );
-    Ray R( Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ) );
+    Ray R( Vector3( 0, 0, 0 ), Vector3( 1, 0, 0 ) );
 
     HitResult Res = Obj.GetCollision( R );
     std::cout << Res.Hit << std::endl;
+    std::cout << Res.Object << std::endl;
 }
 
 void PathTracerEngine::OnRender( )

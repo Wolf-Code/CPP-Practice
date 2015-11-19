@@ -29,10 +29,22 @@ void PathTracerEngine::OnRender( )
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-    glBegin( GL_TRIANGLES );
-    glVertex3f( 0, 0, 0.0 );
-    glVertex3f( this->GetWidth( ), 0.0, 0.0 );
-    glVertex3f( this->inputHandler.GetMouseX( ), this->inputHandler.GetMouseY( ), 0.0 );
+    SphereObject Obj( Vector3( this->GetWidth( ) / 2.0F, this->GetHeight( ) / 2.0F, -100 ), 50 );
+    Obj.SurfaceMaterial.Diffuse = Color( 1, 0.5f, 0 );
+    
+    glBegin( GL_POINTS );
+    for ( int x = 0; x < this->GetWidth( ); x++ )
+        for ( int y = 0; y < this->GetHeight( ); y++ )
+        {
+            Ray R( Vector3( x, y, 0 ), Vector3( 0, 0, -1 ) );
+
+            HitResult Res = Obj.GetCollision( R );
+            if ( Res.Hit )
+            {
+                glColor3f( Res.Object->SurfaceMaterial.Diffuse.R, Res.Object->SurfaceMaterial.Diffuse.G, Res.Object->SurfaceMaterial.Diffuse.B );
+                glVertex3f( x, y, 0 );
+            }
+        }
     glEnd( );
 }
 

@@ -128,8 +128,10 @@
     <ClCompile Include="TetrisEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Color.h" />
     <ClInclude Include="HitResult.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="PathTracerEngine.h" />
     <ClInclude Include="Point2.h" />

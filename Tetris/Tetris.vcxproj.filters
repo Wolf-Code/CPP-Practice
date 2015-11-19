@@ -89,6 +89,12 @@
     <ClInclude Include="SphereObject.h">
       <Filter>Header Files\PathTracer\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\PathTracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

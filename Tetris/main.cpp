@@ -1,7 +1,6 @@
 #include "stdafx.h"
-#include "Renderer.h"
-
-void renderScene( void );
+#include "Point2.h"
+#include "PathTracerEngine.h"
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary> The program's entry point. </summary>
@@ -12,32 +11,18 @@ void renderScene( void );
 ///-------------------------------------------------------------------------------------------------
 int main( int argc, char **argv )
 {
-    Renderer R( argc, argv );
+    PathTracerEngine R( argc, argv );
     // init GLUT and create Window. 
-    R.Initialize( GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
-    R.MakeWindow( "OpenGL!" );
+    try
+    {
+        R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, CPPEngine::Point2( 100, 100 ), CPPEngine::Point2( 320, 320 ) );
+    }
+    catch( std::exception e )
+    {
+        std::cout << "Failed to initialize engine: " << std::endl;
+    }
+    std::cin.clear( );
+    std::cin.get( );
 
-
-    R.SetDisplayFunc( renderScene );
-    R.MainLoop( );
-
-    return 1;
-
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary> Renders the scene. </summary>
-/// <remarks> Wolf, 08-Nov-15. </remarks>
-///-------------------------------------------------------------------------------------------------
-void renderScene( void )
-{
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-    glBegin( GL_TRIANGLES );
-    glVertex3f( -0.5, -0.5, 0.0 );
-    glVertex3f( 0.5, 0.0, 0.0 );
-    glVertex3f( 0.0, 0.5, 0.0 );
-    glEnd( );
-
-    glutSwapBuffers( );
+    return 0;
 }

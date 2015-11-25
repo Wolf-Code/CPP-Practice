@@ -13,11 +13,11 @@ struct Vector3;
 class Matrix4x4
 {
 public:
-    explicit Matrix4x4( float data[ 16 ], std::string id = "" ) : ID( id ), Data( data ) {};
+    explicit Matrix4x4( float data[ 16 ] ) : Data( data ) {};
     Matrix4x4( float m00, float m10, float m20, float m30,
                float m01, float m11, float m21, float m31,
                float m02, float m12, float m22, float m32,
-               float m03, float m13, float m23, float m33, std::string id = "" );
+               float m03, float m13, float m23, float m33 );
     Matrix4x4( const Matrix4x4& m );
     ~Matrix4x4( );
 
@@ -31,7 +31,6 @@ public:
 
     static Matrix4x4 Identity( );
     static Matrix4x4 Zero( );
-    std::string ID;
 
     static Matrix4x4 CreateTranslation( const CPPEngine::Vector3& translation );
     static Matrix4x4 CreateScale( const CPPEngine::Vector3& scale );

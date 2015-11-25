@@ -6,22 +6,21 @@
 static const Matrix4x4& identity = Matrix4x4( 1, 1, 1, 1,
                                              1, 1, 1, 1,
                                              1, 1, 1, 1,
-                                             1, 1, 1, 1, "identity" );
+                                             1, 1, 1, 1 );
 
 static const Matrix4x4& zero = Matrix4x4( 0, 0, 0, 0,
                                          0, 0, 0, 0,
                                          0, 0, 0, 0,
-                                         0, 0, 0, 0, "zero" );
+                                         0, 0, 0, 0 );
 
-Matrix4x4::Matrix4x4( float m00, float m10, float m20, float m30, float m01, float m11, float m21, float m31, float m02, float m12, float m22, float m32, float m03, float m13, float m23, float m33, std::string id )
-    : ID( id ), Data( new float[ 16 ]{ m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32, m03, m13, m23, m33 } )
+Matrix4x4::Matrix4x4( float m00, float m10, float m20, float m30, float m01, float m11, float m21, float m31, float m02, float m12, float m22, float m32, float m03, float m13, float m23, float m33 )
+    : Data( new float[ 16 ]{ m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32, m03, m13, m23, m33 } )
 {
 
 }
 
 Matrix4x4::Matrix4x4( const Matrix4x4& m )
 {
-    this->ID = m.ID + " copy";
     this->Data = new float[ m.Dimensions * m.Dimensions ];
     for ( int x = 0; x < this->Dimensions; x++ )
         for ( int y = 0; y < this->Dimensions; y++ )

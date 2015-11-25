@@ -1,50 +1,54 @@
 #pragma once
 #ifndef __POINT2_H__
+#define __POINT2_H__
 
-/// <summary> A 2D point. </summary>
-struct Point2
+
+namespace CPPEngine
 {
-public:
-    Point2( int X = 0, int Y = 0 );
-
-    /// <summary> Addition operator. </summary>
-    /// <param name="point"> The point. </param>
-    /// <returns> The result of the operation. </returns>
-    Point2 operator+( Point2 point ) const
+    /// <summary> A 2D point. </summary>
+    struct Point2
     {
-        point.X += this->X;
-        point.Y += this->Y;
+    public:
+        Point2( int x = 0, int y = 0 ) : X( x ), Y( y ) {};
 
-        return point;
-    }
+        /// <summary> Addition operator. </summary>
+        /// <param name="point"> The point. </param>
+        /// <returns> The result of the operation. </returns>
+        Point2 operator+( Point2 point ) const
+        {
+            point.X += this->X;
+            point.Y += this->Y;
 
-    /// <summary> Subtraction operator. </summary>
-    /// <param name="point"> The point. </param>
-    /// <returns> The result of the operation. </returns>
-    Point2 operator-( Point2 point ) const
-    {
-        point.X -= this->X;
-        point.Y -= this->Y;
+            return point;
+        }
 
-        return point;
-    }
+        /// <summary> Subtraction operator. </summary>
+        /// <param name="point"> The point. </param>
+        /// <returns> The result of the operation. </returns>
+        Point2 operator-( Point2 point ) const
+        {
+            point.X -= this->X;
+            point.Y -= this->Y;
 
-    /// <summary> Addition assignment operator. </summary>
-    /// <param name="point"> The point. </param>
-    /// <returns> The result of the operation. </returns>
-    Point2& operator+=( const Point2& point )
-    {
-        this->X += point.X;
-        this->Y += point.Y;
+            return point;
+        }
 
-        return *this;
-    }
+        /// <summary> Addition assignment operator. </summary>
+        /// <param name="point"> The point. </param>
+        /// <returns> The result of the operation. </returns>
+        Point2& operator+=( const Point2& point )
+        {
+            this->X += point.X;
+            this->Y += point.Y;
 
-    /// <summary> The X coordinate. </summary>
-    int X;
+            return *this;
+        }
 
-    /// <summary> The Y coordinate. </summary>
-    int Y;
-};
+        /// <summary> The X coordinate. </summary>
+        int X;
 
+        /// <summary> The Y coordinate. </summary>
+        int Y;
+    };
+}
 #endif

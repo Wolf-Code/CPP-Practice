@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "TetrisEngine.h"
 
-TetrisEngine::TetrisEngine( int argc, char** argv ) : Engine( argc, argv )
+TetrisEngine::TetrisEngine( int argc, char** argv ) : CPPEngine::Engine( argc, argv )
 {
 
 }
 
 void TetrisEngine::OnWindowResize( int width, int height )
 {
-    Engine::OnWindowResize( width, height );
+    CPPEngine::Engine::OnWindowResize( width, height );
 }
 
 void TetrisEngine::OnLoad( )

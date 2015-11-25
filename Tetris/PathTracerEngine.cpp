@@ -2,53 +2,60 @@
 #include "PathTracerEngine.h"
 #include "Vector3.h"
 #include "SphereObject.h"
+#include "Camera.h"
 
-PathTracerEngine::PathTracerEngine( int argc, char** argv ) : Engine( argc, argv )
+PathTracerEngine::PathTracerEngine( int argc, char** argv ) : Engine( argc, argv ), Pixels( nullptr )
 {
 
-}
-
-void PathTracerEngine::OnWindowResize( int width, int height )
-{
-    Engine::OnWindowResize( width, height );
 }
 
 void PathTracerEngine::OnLoad( )
 {
     std::cout << "Loaded renderer" << std::endl;
 
-    SphereObject Obj( Vector3( 10, 0, 0 ), 5 );
-    Ray R( Vector3( 0, 0, 0 ), Vector3( 1, 0, 0 ) );
+    this->Pixels = new float[ this->GetWidth( ) * this->GetHeight( ) * 3 ];
+}
 
-    HitResult Res = Obj.GetCollision( R );
-    std::cout << Res.Hit << std::endl;
-    std::cout << Res.Object << std::endl;
+void PathTracerEngine::OnWindowResize( int width, int height )
+{
+    Engine::OnWindowResize( width, height );
+
+    delete[ ] this->Pixels;
+    this->Pixels = new float[ width * height * 3 ];
 }
 
 void PathTracerEngine::OnRender( )
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-    SphereObject Obj( Vector3( this->GetWidth( ) / 2.0F, this->GetHeight( ) / 2.0F, -100 ), 50 );
-    Obj.SurfaceMaterial.Diffuse = Color( 1, 0.5f, 0 );
     
-    glBegin( GL_POINTS );
+    SphereObject Obj( CPPEngine::Vector3( 0, 0, -100 ), 50 );
+    Obj.SurfaceMaterial.Diffuse = CPPEngine::Color( 0.4f, 0.2f, 0.6f );
+
+    CPPEngine::Camera Cam;
+    Cam.SetFOV( 90, false );
+    Cam.SetResolution( CPPEngine::Vector2( this->GetWidth( ), this->GetHeight( ) ) );
+
     for ( int x = 0; x < this->GetWidth( ); x++ )
         for ( int y = 0; y < this->GetHeight( ); y++ )
         {
-            Ray R( Vector3( x, y, 0 ), Vector3( 0, 0, -1 ) );
+            Ray R = Cam.GetRay( x, y );
+
 
             HitResult Res = Obj.GetCollision( R );
             if ( Res.Hit )
             {
-                glColor3f( Res.Object->SurfaceMaterial.Diffuse.R, Res.Object->SurfaceMaterial.Diffuse.G, Res.Object->SurfaceMaterial.Diffuse.B );
-                glVertex3f( x, y, 0 );
+                int idx = ( y * this->GetWidth( ) + x ) * 3;
+                Pixels[ idx ] = Res.Object->SurfaceMaterial.Diffuse.R;
+                Pixels[ idx + 1 ] = Res.Object->SurfaceMaterial.Diffuse.G;
+                Pixels[ idx + 2 ] = Res.Object->SurfaceMaterial.Diffuse.B;
             }
         }
-    glEnd( );
+    glDrawPixels( this->GetWidth( ), this->GetHeight( ), GL_RGB, GL_FLOAT, Pixels );
+
+    std::cout << "Frame" << std::endl;
 }
 
 PathTracerEngine::~PathTracerEngine( )
 {
-
+    delete[ ] this->Pixels;
 }

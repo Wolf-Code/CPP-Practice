@@ -120,18 +120,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
+    <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="PathTracerEngine.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="SphereObject.cpp" />
     <ClCompile Include="TetrisEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="HitResult.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="PathTracerEngine.h" />
     <ClInclude Include="Point2.h" />

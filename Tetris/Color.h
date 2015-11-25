@@ -2,14 +2,16 @@
 #ifndef __COLOR_H__
 #define __COLOR_H__
 
-struct Color
+namespace CPPEngine
 {
-public:
-    explicit Color( float r = 0, float g = 0, float b = 0 ) : R( r ), G( g ), B( b ) {};
-    
-    float R;
-    float G;
-    float B;
-};
+    struct Color
+    {
+    public:
+        explicit Color( float r = 0, float g = 0, float b = 0 ) : R( r ), G( g ), B( b ) {};
 
+        float R;
+        float G;
+        float B;
+    };
+}
 #endif

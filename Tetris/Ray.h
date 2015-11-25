@@ -5,11 +5,10 @@
 
 struct Ray
 {
-public:
-    Ray( Vector3 start, Vector3 direction ) : Start( start ), Direction( direction ) {};
+    Ray( CPPEngine::Vector3 start, CPPEngine::Vector3 direction ) : Start( start ), Direction( direction ) {};
 
-    Vector3 Start;
-    Vector3 Direction;
+    CPPEngine::Vector3 Start;
+    CPPEngine::Vector3 Direction;
 };
 #endif
 

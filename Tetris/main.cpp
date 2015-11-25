@@ -15,7 +15,7 @@ int main( int argc, char **argv )
     // init GLUT and create Window. 
     try
     {
-        R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, Point2( 100, 100 ), Point2( 320, 320 ) );
+        R.Initialize( "OpenGL!", GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA, CPPEngine::Point2( 100, 100 ), CPPEngine::Point2( 320, 320 ) );
     }
     catch( std::exception e )
     {

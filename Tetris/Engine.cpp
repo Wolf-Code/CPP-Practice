@@ -3,7 +3,7 @@
 #include "Engine.h"
 
 // A way to keep the active Engine accessable for the Glut hooks.
-static Engine* m_This;
+static CPPEngine::Engine* m_This;
 
 // Makes sure the OnWindowResize event is called.
 void renderer_OnResize( int width, int height )
@@ -12,7 +12,7 @@ void renderer_OnResize( int width, int height )
 }
 
 // Calls the actual events on the instance of Engine.
-void handler_OnResize( int width, int height, Engine& engine )
+void CPPEngine::handler_OnResize( int width, int height, CPPEngine::Engine& engine )
 {
     engine.OnWindowResize( width, height );
 }
@@ -24,7 +24,7 @@ void renderer_OnRender( void )
 }
 
 // Calls the actual events on the instance of Engine.
-void handler_OnRender( Engine& engine )
+void CPPEngine::handler_OnRender( CPPEngine::Engine& engine )
 {
     engine.OnUpdate( );
     engine.OnRender( );
@@ -37,7 +37,7 @@ void handler_OnRender( Engine& engine )
 /// <summary> Default constructor. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 ///-------------------------------------------------------------------------------------------------
-Engine::Engine( int argc, char** argv ) : windowIdentifier( 0 ), width( 0 ), height( 0 )
+CPPEngine::Engine::Engine( int argc, char** argv ) : windowIdentifier( 0 ), width( 0 ), height( 0 )
 {
     glutInit( &argc, argv );
 }
@@ -49,7 +49,7 @@ Engine::Engine( int argc, char** argv ) : windowIdentifier( 0 ), width( 0 ), hei
 /// <param name="position">    The position. </param>
 /// <param name="size">        The size. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::Initialize( const char* title, const unsigned int displayMode, const Point2& position, const Point2& size )
+void CPPEngine::Engine::Initialize( const char* title, const unsigned int displayMode, const CPPEngine::Point2& position, const CPPEngine::Point2& size )
 {
     if ( m_This )
         throw std::exception( "Only one instance of the Renderer may be active at any one time." );
@@ -75,7 +75,7 @@ void Engine::Initialize( const char* title, const unsigned int displayMode, cons
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="Position"> The position of the window. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::SetWindowPosition( const Point2& position ) const
+void CPPEngine::Engine::SetWindowPosition( const CPPEngine::Point2& position ) const
 {
     glutPositionWindow( position.X, position.Y );
 }
@@ -85,7 +85,7 @@ void Engine::SetWindowPosition( const Point2& position ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="Size"> The size of the window. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::SetWindowSize( const Point2& size ) const
+void CPPEngine::Engine::SetWindowSize( const CPPEngine::Point2& size ) const
 {
     glutReshapeWindow( size.X, size.Y );
 }
@@ -95,7 +95,7 @@ void Engine::SetWindowSize( const Point2& size ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="width"> The width. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::SetWidth( const int width ) const
+void CPPEngine::Engine::SetWidth( const int width ) const
 {
     glutReshapeWindow( width <= 0 ? 1 : width, this->height );
 }
@@ -105,7 +105,7 @@ void Engine::SetWidth( const int width ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <param name="height"> The height. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::SetHeight( const int height ) const
+void CPPEngine::Engine::SetHeight( const int height ) const
 {
     glutReshapeWindow( this->width, height <= 0 ? 1 : height );
 }
@@ -116,7 +116,7 @@ void Engine::SetHeight( const int height ) const
 /// <param name="width">  The width. </param>
 /// <param name="height"> The height. </param>
 ///-------------------------------------------------------------------------------------------------
-void Engine::OnWindowResize( const int width, const int height )
+void CPPEngine::Engine::OnWindowResize( const int width, const int height )
 {
     // Use the Projection Matrix
     glMatrixMode( GL_PROJECTION );
@@ -142,7 +142,7 @@ void Engine::OnWindowResize( const int width, const int height )
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <returns> The width. </returns>
 ///-------------------------------------------------------------------------------------------------
-int Engine::GetWidth( ) const
+int CPPEngine::Engine::GetWidth( ) const
 {
     return this->width;
 }
@@ -152,7 +152,7 @@ int Engine::GetWidth( ) const
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 /// <returns> The height. </returns>
 ///-------------------------------------------------------------------------------------------------
-int Engine::GetHeight( ) const
+int CPPEngine::Engine::GetHeight( ) const
 {
     return this->height;
 }
@@ -161,7 +161,7 @@ int Engine::GetHeight( ) const
 /// <summary> Destructor. </summary>
 /// <remarks> Wolf, 08-Nov-15. </remarks>
 ///-------------------------------------------------------------------------------------------------
-Engine::~Engine( )
+CPPEngine::Engine::~Engine( )
 {
     glutDestroyWindow( this->windowIdentifier );
 }

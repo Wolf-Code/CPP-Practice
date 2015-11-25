@@ -3,14 +3,16 @@
 #define __MATERIAL_H__
 
 #include "Color.h"
+
+
 struct Material
 {
 public:
-    Material( ) : Diffuse( Color( ) )
+    Material( ) : Diffuse(CPPEngine::Color( ) )
     {
-        
-    };
-    Color Diffuse;
-};
 
+    };
+
+    CPPEngine::Color Diffuse;
+};
 #endif

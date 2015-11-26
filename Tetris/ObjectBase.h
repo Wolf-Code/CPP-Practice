@@ -10,10 +10,7 @@
 class ObjectBase
 {
 public:
-    ObjectBase( ) :SurfaceMaterial( Material( ) )
-    {
-        
-    };
+    ObjectBase( ) :SurfaceMaterial( Material( ) ) {};
     virtual HitResult GetCollision( const Ray& ray ) const = 0;
     virtual ~ObjectBase( ) {};
 

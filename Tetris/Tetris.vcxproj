@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="HitResult.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathHelper.cpp" />

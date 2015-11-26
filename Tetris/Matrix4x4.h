@@ -1,14 +1,11 @@
 #pragma once
 #ifndef __MATRIX4x4_H__
 #define __MATRIX4x4_H__
-#include <string>
 
 namespace CPPEngine
 {
     struct Vector3;
 }
-
-struct Vector3;
 
 class Matrix4x4
 {

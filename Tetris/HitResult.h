@@ -8,10 +8,11 @@ class ObjectBase;
 struct HitResult
 {
 public:
-    HitResult( ) : Hit( false ), Position(CPPEngine::Vector3( ) ), Normal( CPPEngine::Vector3( ) ), DistanceSquared( 0 ), Object( nullptr ) {};
+    HitResult( ) : Hit( false ), Position( CPPEngine::Vector3( ) ), Normal( CPPEngine::Vector3( ) ), DistanceSquared( 0 ), Object( nullptr ) {};
+
     /// <summary> Gets the distance. </summary>
     /// <returns> The distance. </returns>
-    float Distance( ) const { return sqrt( this->DistanceSquared ); };
+    float Distance( ) const;
 
     bool Hit;
     CPPEngine::Vector3 Position;

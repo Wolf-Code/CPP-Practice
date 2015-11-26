@@ -3,9 +3,10 @@
 #define __OBJECTBASE_H__
 
 #include "HitResult.h"
-#include "Ray.h"
 #include "Material.h"
 
+
+struct Ray;
 
 class ObjectBase
 {

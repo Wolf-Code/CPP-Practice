@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <stdexcept>
 #include "Engine.h"
+#include "Point2.h"
 
 // A way to keep the active Engine accessable for the Glut hooks.
 static CPPEngine::Engine* m_This;

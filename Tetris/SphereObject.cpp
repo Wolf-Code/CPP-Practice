@@ -1,4 +1,5 @@
 #include "SphereObject.h"
+#include "Ray.h"
 
 HitResult SphereObject::GetCollision( const Ray& ray ) const
 {

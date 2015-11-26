@@ -3,8 +3,6 @@
 #define __ANGLE_H__
 #include "Matrix4x4.h"
 
-struct Vector3;
-
 namespace CPPEngine
 {
     struct Vector3;

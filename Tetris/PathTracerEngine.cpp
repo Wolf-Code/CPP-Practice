@@ -3,6 +3,7 @@
 #include "Vector3.h"
 #include "SphereObject.h"
 #include "Camera.h"
+#include "Ray.h"
 
 PathTracerEngine::PathTracerEngine( int argc, char** argv ) : Engine( argc, argv ), Pixels( nullptr )
 {
@@ -33,7 +34,7 @@ void PathTracerEngine::OnRender( )
 
     CPPEngine::Camera Cam;
     Cam.SetFOV( 90, false );
-    Cam.SetResolution( CPPEngine::Vector2( this->GetWidth( ), this->GetHeight( ) ) );
+    Cam.SetResolution( this->GetWidth( ), this->GetHeight( ) );
 
     for ( int x = 0; x < this->GetWidth( ); x++ )
         for ( int y = 0; y < this->GetHeight( ); y++ )

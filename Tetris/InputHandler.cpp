@@ -23,7 +23,7 @@ void CPPEngine::handler_OnMouseMove( int x, int y, CPPEngine::InputHandler& inpu
     inputHandler.OnMouseMove( x, y );
 }
 
-CPPEngine::InputHandler::InputHandler( ) : mousePos( )
+CPPEngine::InputHandler::InputHandler( ) : MouseX( 0 ), MouseY( 0 )
 {
     m_This = this;
 }
@@ -45,16 +45,16 @@ void CPPEngine::InputHandler::OnMouseButtonChange( int button, int state, int x,
 
 void CPPEngine::InputHandler::OnMouseMove( int x, int y )
 {
-    this->mousePos.X = x;
-    this->mousePos.Y = y;
+    this->MouseX = x;
+    this->MouseY = y;
 }
 
 int CPPEngine::InputHandler::GetMouseX( ) const
 {
-    return this->mousePos.X;
+    return MouseX;
 }
 
 int CPPEngine::InputHandler::GetMouseY( ) const
 {
-    return this->mousePos.Y;
+    return MouseY;
 }

@@ -2,11 +2,12 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
 
-#include "Point2.h"
 #include "InputHandler.h"
 
 namespace CPPEngine
 {
+    struct Point2;
+
     /// <summary> The base class engine. </summary>
     class Engine
     {
@@ -17,9 +18,9 @@ namespace CPPEngine
         friend void handler_OnRender( Engine& engine );
         friend void handler_OnResize( int width, int height, Engine& engine );
 
-        void Initialize( const char* Title, const unsigned int displayMode, const CPPEngine::Point2& position, const CPPEngine::Point2& size );
-        void SetWindowPosition( const CPPEngine::Point2& position ) const;
-        void SetWindowSize( const CPPEngine::Point2& size ) const;
+        void Initialize( const char* Title, const unsigned int displayMode, const Point2& position, const Point2& size );
+        void SetWindowPosition( const Point2& position ) const;
+        void SetWindowSize( const Point2& size ) const;
         void SetWidth( const int width ) const;
         void SetHeight( const int height ) const;
 

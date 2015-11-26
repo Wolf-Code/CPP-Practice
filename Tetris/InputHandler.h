@@ -2,8 +2,6 @@
 #ifndef __INPUTHANDLER_H__
 #define __INPUTHANDLER_H__
 
-#include "Point2.h"
-
 namespace CPPEngine
 {
     /// <summary> An input handler. </summary>
@@ -24,7 +22,8 @@ namespace CPPEngine
         virtual void OnMouseButtonChange( int button, int state, int x, int y );
         virtual void OnMouseMove( int x, int y );
 
-        Point2 mousePos;
+        int MouseX;
+        int MouseY;
     };
 };
 #endif

@@ -4,7 +4,6 @@
 
 #include "Angle.h"
 #include "Vector3.h"
-#include "Vector2.h"
 
 struct Ray;
 
@@ -13,18 +12,21 @@ namespace CPPEngine
     class Camera
     {
     public:
-        Camera( ) : Angle( CPPEngine::Angle( ) ), Position( Vector3( ) ), FOV( 90 ), FOVDivided( 1 ), Resolution( Vector2( ) ), AspectRatio( 1 ) {};
+        Camera( ) : Angle( CPPEngine::Angle( ) ), Position( Vector3( ) ), FOV( 90 ), FOVDivided( 1 ), Width( 0 ), Height( 0 ), AspectRatio( 1 ) {};
         Ray GetRay( const float x, const float y );
 
         void SetFOV( float fov, bool radians = true );
-        void SetResolution( Vector2 resolution );
+        void SetResolution( const float width, const float height );
 
     private:
         Angle Angle;
         Vector3 Position;
         float FOV;
         float FOVDivided;
-        Vector2 Resolution;
+       
+        float Width;
+        float Height;
+
         float AspectRatio;
     };
 }

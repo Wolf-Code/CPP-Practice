@@ -12,46 +12,22 @@ namespace CPPEngine
         /// <summary> Addition operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector2 operator+( Vector2 vector ) const
-        {
-            vector.X += this->X;
-            vector.Y += this->Y;
-
-            return vector;
-        }
+        Vector2 operator+( Vector2 vector ) const;
 
         /// <summary> Subtraction operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector2 operator-( Vector2 vector ) const
-        {
-            vector.X -= this->X;
-            vector.Y -= this->Y;
-
-            return vector;
-        }
+        Vector2 operator-( Vector2 vector ) const;
 
         /// <summary> Addition assignment operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector2& operator+=( const Vector2& vector )
-        {
-            this->X += vector.X;
-            this->Y += vector.Y;
-
-            return *this;
-        }
+        Vector2& operator+=( const Vector2& vector );
 
         /// <summary> Subtraction assignment operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector2& operator-=( const Vector2& vector )
-        {
-            this->X -= vector.X;
-            this->Y -= vector.Y;
-
-            return *this;
-        }
+        Vector2& operator-=( const Vector2& vector );
 
         /// <summary> The X coordinate. </summary>
         float X;

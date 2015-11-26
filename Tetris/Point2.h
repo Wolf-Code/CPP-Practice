@@ -9,40 +9,22 @@ namespace CPPEngine
     struct Point2
     {
     public:
-        Point2( int x = 0, int y = 0 ) : X( x ), Y( y ) {};
+        Point2( const int x = 0, const int y = 0 ) : X( x ), Y( y ) {};
 
         /// <summary> Addition operator. </summary>
         /// <param name="point"> The point. </param>
         /// <returns> The result of the operation. </returns>
-        Point2 operator+( Point2 point ) const
-        {
-            point.X += this->X;
-            point.Y += this->Y;
-
-            return point;
-        }
+        Point2 operator+( Point2 point ) const;
 
         /// <summary> Subtraction operator. </summary>
         /// <param name="point"> The point. </param>
         /// <returns> The result of the operation. </returns>
-        Point2 operator-( Point2 point ) const
-        {
-            point.X -= this->X;
-            point.Y -= this->Y;
-
-            return point;
-        }
+        Point2 operator-( Point2 point ) const;
 
         /// <summary> Addition assignment operator. </summary>
         /// <param name="point"> The point. </param>
         /// <returns> The result of the operation. </returns>
-        Point2& operator+=( const Point2& point )
-        {
-            this->X += point.X;
-            this->Y += point.Y;
-
-            return *this;
-        }
+        Point2& operator+=( const Point2& point );
 
         /// <summary> The X coordinate. </summary>
         int X;

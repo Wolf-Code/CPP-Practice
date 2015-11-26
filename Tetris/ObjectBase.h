@@ -11,8 +11,9 @@ class ObjectBase
 {
 public:
     ObjectBase( ) :SurfaceMaterial( Material( ) ) {};
-    virtual HitResult GetCollision( const Ray& ray ) const = 0;
     virtual ~ObjectBase( ) {};
+
+    virtual HitResult GetCollision( const Ray& ray ) const = 0;
 
     Material SurfaceMaterial;
 };

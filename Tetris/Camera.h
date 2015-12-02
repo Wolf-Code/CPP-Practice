@@ -17,6 +17,7 @@ namespace CPPEngine
 
         void SetFOV( float fov, bool radians = true );
         void SetResolution( const float width, const float height );
+        void SetPosition( const Vector3& vector );
 
     private:
         Angle Angle;

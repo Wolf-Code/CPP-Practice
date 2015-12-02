@@ -68,7 +68,7 @@ void Matrix4x4::AddValue( const int x, const int y, float value ) const
 
 CPPEngine::Vector3 Matrix4x4::Forward( ) const
 {
-    return CPPEngine::Vector3( this->GetValue( 2, 0 ), this->GetValue( 2, 1 ), this->GetValue( 2, 2 ) );
+    return -CPPEngine::Vector3( this->GetValue( 2, 0 ), this->GetValue( 2, 1 ), this->GetValue( 2, 2 ) );
 }
 
 CPPEngine::Vector3 Matrix4x4::Right( ) const

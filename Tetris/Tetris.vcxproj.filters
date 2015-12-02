@@ -81,6 +81,9 @@
     <ClCompile Include="Color.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="PathTracerCalculator.cpp">
+      <Filter>Source Files\PathTracer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -138,6 +141,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
+      <Filter>Header Files\PathTracer</Filter>
+    </ClInclude>
+    <ClInclude Include="PathTracerCalculator.h">
+      <Filter>Header Files\PathTracer</Filter>
+    </ClInclude>
+    <ClInclude Include="PathTracerSettings.h">
       <Filter>Header Files\PathTracer</Filter>
     </ClInclude>
   </ItemGroup>

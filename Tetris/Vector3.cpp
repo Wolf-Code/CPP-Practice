@@ -2,6 +2,15 @@
 
 float CPPEngine::Vector3::Dot( const Vector3& vector ) const { return this->X * vector.X + this->Y * vector.Y + this->Z * vector.Z; }
 
+CPPEngine::Vector3 CPPEngine::Vector3::Cross( const Vector3& vector ) const
+{
+    return Vector3(
+        this->Y * vector.Z - this->Z * vector.Y,
+        this->Z * vector.X - this->X * vector.Z,
+        this->X * vector.Y - this->Y * vector.X
+        );
+}
+
 float CPPEngine::Vector3::LengthSquared( ) const { return this->Dot( *this ); };
 
 float CPPEngine::Vector3::Length( ) const
@@ -32,59 +41,47 @@ CPPEngine::Vector3 CPPEngine::Vector3::operator+( Vector3 vector ) const
     return vector;
 }
 
-CPPEngine::Vector3& CPPEngine::Vector3::operator+=( const Vector3& vector )
+void CPPEngine::Vector3::operator+=( const Vector3& vector )
 {
     this->X += vector.X;
     this->Y += vector.Y;
     this->Z += vector.Z;
-
-    return *this;
 }
 
-CPPEngine::Vector3 CPPEngine::Vector3::operator-( Vector3 vector ) const
+CPPEngine::Vector3 CPPEngine::Vector3::operator-( const Vector3& vector ) const
 {
-    vector.X -= this->X;
-    vector.Y -= this->Y;
-    vector.Z -= this->Z;
-
-    return vector;
+    return Vector3( this->X - vector.X, this->Y - vector.Y, this->Z - vector.Z );
 }
 
-CPPEngine::Vector3& CPPEngine::Vector3::operator-=( const Vector3& vector )
+void CPPEngine::Vector3::operator-=( const Vector3& vector )
 {
     this->X -= vector.X;
     this->Y -= vector.Y;
     this->Z -= vector.Z;
-
-    return *this;
 }
 
 CPPEngine::Vector3 CPPEngine::Vector3::operator/( const float value ) const
 {
-    Vector3 V( this->X, this->Y, this->Z );
-    V.X /= value;
-    V.Y /= value;
-    V.Z /= value;
-
-    return V;
+    return Vector3( this->X / value, this->Y / value, this->Z / value );
 }
 
-CPPEngine::Vector3& CPPEngine::Vector3::operator/=( const float value )
+CPPEngine::Vector3 CPPEngine::Vector3::operator/( const Vector3& vector ) const
+{
+    return Vector3( this->X / vector.X, this->Y / vector.Y, this->Z / vector.Z );
+}
+
+void CPPEngine::Vector3::operator/=( const float value )
 {
     this->X /= value;
     this->Y /= value;
     this->Z /= value;
-
-    return *this;
 }
 
-CPPEngine::Vector3& CPPEngine::Vector3::operator*=( const float value )
+void CPPEngine::Vector3::operator*=( const float value )
 {
-    this->X /= value;
-    this->Y /= value;
-    this->Z /= value;
-
-    return *this;
+    this->X *= value;
+    this->Y *= value;
+    this->Z *= value;
 }
 
 CPPEngine::Vector3 CPPEngine::Vector3::operator*( Vector3 value ) const
@@ -98,15 +95,15 @@ CPPEngine::Vector3 CPPEngine::Vector3::operator*( Vector3 value ) const
 
 CPPEngine::Vector3 CPPEngine::Vector3::operator*( const float value ) const
 {
-    Vector3 v = *this;
-    v.X *= value;
-    v.Y *= value;
-    v.Z *= value;
-
-    return v;
+    return Vector3( this->X * value, this->Y * value, this->Z * value );
 }
 
-std::ostream& operator<<( std::ostream& out, const CPPEngine::Vector3& v )
+CPPEngine::Vector3 CPPEngine::Vector3::operator-( ) const
+{
+    return Vector3( -this->X, -this->Y, -this->Z );
+}
+
+std::ostream& CPPEngine::operator<<( std::ostream& out, const Vector3& v )
 {
     return out << "{" << v.X << ", " << v.Y << ", " << v.Z << "}";
 };

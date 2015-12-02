@@ -7,12 +7,19 @@
 
 struct Material
 {
-public:
-    Material( ) : Diffuse(CPPEngine::Color( ) )
+    Material( ) : ColorEmission( CPPEngine::Color::Black( ) ), ColorDiffuse( CPPEngine::Color::Black( ) )
     {
 
     };
 
-    CPPEngine::Color Diffuse;
+    enum Type
+    {
+        Diffuse,
+        Reflective,
+        Refractive
+    };
+
+    CPPEngine::Color ColorEmission;
+    CPPEngine::Color ColorDiffuse;
 };
 #endif

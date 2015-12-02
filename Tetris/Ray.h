@@ -5,10 +5,11 @@
 
 struct Ray
 {
-    Ray( CPPEngine::Vector3 start, CPPEngine::Vector3 direction ) : Start( start ), Direction( direction ) {};
+    Ray( CPPEngine::Vector3 start, CPPEngine::Vector3 direction, unsigned int bounces ) : Start( start ), Direction( direction ), Bounces( bounces ) {};
 
     CPPEngine::Vector3 Start;
     CPPEngine::Vector3 Direction;
+    unsigned int Bounces;
 };
 #endif
 

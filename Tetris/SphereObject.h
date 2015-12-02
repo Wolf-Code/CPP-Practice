@@ -7,12 +7,15 @@
 class SphereObject : public ObjectBase
 {
 public:
-    SphereObject( const CPPEngine::Vector3& center, const float radius ) : Center( center ), Radius( radius ) {};
+    SphereObject( const CPPEngine::Vector3& center, const float radius ) : Center( center ), Radius( radius ), RadiusSquared( radius * radius ) {};
     ~SphereObject( ) {};
 
     HitResult GetCollision( const Ray& ray ) const override;
 
     CPPEngine::Vector3 Center;
     float Radius;
+
+private:
+    float RadiusSquared;
 };
 #endif

@@ -3,8 +3,11 @@
 #define __VECTOR3_H__
 #include "stdafx.h"
 
+
 namespace CPPEngine
 {
+    struct Color;
+
     struct Vector3
     {
         /// <summary> Constructor. </summary>
@@ -17,6 +20,15 @@ namespace CPPEngine
         /// <param name="vector"> The vector. </param>
         /// <returns> The dot product.. </returns>
         float Dot( const Vector3& vector ) const;
+
+        /// <summary>
+        /// Calculates the cross product.
+        /// </summary>
+        /// <param name="vector"> The vector. </param>
+        /// <returns>
+        /// A Vector3.
+        /// </returns>
+        Vector3 Cross( const Vector3& vector ) const;
 
         /// <summary> Gets the squared length. </summary>
         /// <returns> The squared length. </returns>
@@ -41,32 +53,43 @@ namespace CPPEngine
         /// <summary> Addition assignment operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector3& operator+=( const Vector3& vector );
+        void operator+=( const Vector3& vector );
 
         /// <summary> Subtraction operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector3 operator-( Vector3 vector ) const;
+        Vector3 operator-( const Vector3& vector ) const;
 
         /// <summary> Subtraction assignment operator. </summary>
         /// <param name="vector"> The vector. </param>
         /// <returns> The result of the operation. </returns>
-        Vector3& operator-=( const Vector3& vector );
+        void operator-=( const Vector3& vector );
 
         /// <summary> Division operator. </summary>
         /// <param name="value"> The value. </param>
         /// <returns> The result of the operation. </returns>
         Vector3 operator/( const float value ) const;
 
-        /// <summary> Addition assignment operator. </summary>
+        /// <summary>
+        /// Division operator.
+        /// </summary>
         /// <param name="vector"> The vector. </param>
-        /// <returns> The result of the operation. </returns>
-        Vector3& Vector3::operator/=( const float value );
+        /// <returns>
+        /// The result of the operation.
+        /// </returns>
+        Vector3 operator/( const Vector3& vector ) const;
 
-        /// <summary> Multiplication assignment operator. </summary>
+        /// <summary>
+        /// Division assignment operator.
+        /// </summary>
         /// <param name="value"> The value. </param>
-        /// <returns> The result of the operation. </returns>
-        Vector3& operator*=( const float value );
+        void Vector3::operator/=( const float value );
+
+        /// <summary>
+        /// Multiplication assignment operator.
+        /// </summary>
+        /// <param name="value"> The value. </param>
+        void operator*=( const float value );
 
         /// <summary> Multiplication operator. </summary>
         /// <param name="value"> The value. </param>
@@ -82,24 +105,16 @@ namespace CPPEngine
         /// </returns>
         Vector3 operator*( const float value ) const;
 
-        /// <summary> Multiplication operator. </summary>
-        /// <param name="value"> The first value to multiply. </param>
-        /// <param name="v">     The second value to multiply. </param>
-        /// <returns> The result of the operation. </returns>
-        friend Vector3 Vector3::operator*( const float value, Vector3 v )
-        {
-            v.X *= value;
-            v.Y *= value;
-            v.Z *= value;
-
-            return v;
-        };
+        /// <summary>
+        /// Negate operator
+        /// </summary>
+        Vector3 operator-( ) const;
 
         /// <summary> Stream insertion operator. </summary>
         /// <param name="out"> [in,out] The output stream. </param>
         /// <param name="v">   The Vector3 to process. </param>
         /// <returns> The written stream. </returns>
-        friend std::ostream& Vector3::operator<<( std::ostream& out, const Vector3& v );
+        friend std::ostream& operator<<( std::ostream& out, const Vector3& v );
 
         /// <summary> The X coordinate. </summary>
         float X;
